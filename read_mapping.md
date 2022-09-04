@@ -53,6 +53,6 @@ To run the script, type
 ```
 sh mapping_script.sh
 ```
-prepDE.py -i ballgown
+prepDE_local.py -i ballgown
 ```
 ## 7.	We’ll now move to R for the remainder of our analyses. (will be provided as part2)
