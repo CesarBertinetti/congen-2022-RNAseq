@@ -51,7 +51,7 @@ At this point, you will have 12 bam files in separate folders, one for each indi
 ```
 To run the script, type
 ```
-source mapping_script.sh
+sh mapping_script.sh
 ```
 prepDE.py -i ballgown
 ```
