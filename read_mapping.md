@@ -46,12 +46,12 @@ do
   stringtie alignments/$line.sort.bam -G reference/GCF_023065955.1_UrsArc1.0_NW_025929828.gtf -e -B -o ballgown/$line/$line.gtf
 done < "$input"
 ```
-At this point, you will have 12 bam files in separate folders, one for each individual 
-## 6.	We want to generate counts data for each individual. There are many ways to do this, we will use prepDE.py, which is a python script provided with stringtie.  
-```
 To run the script, type
 ```
 sh mapping_script.sh
+```
+At this point, you will have 12 bam files in separate folders, one for each individual 
+## 6.	We want to generate counts data for each individual. There are many ways to do this, we will use prepDE.py, which is a python script provided with stringtie.  
 ```
 prepDE_local.py -i ballgown
 ```
