@@ -17,7 +17,7 @@ library(edgeR)
 
 ## Set working directory
 ```
-setwd("Desktop/")
+setwd("instructor_materials/Joanna_Kelley/2022/")
 ```
 
 ## Read in gene count matrix 
