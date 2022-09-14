@@ -55,6 +55,6 @@ sh mapping_script.sh
 At this point, you will have 12 bam files in separate folders, one for each individual 
 ## 6.	We want to generate counts data for each individual. There are many ways to do this, we will use prepDE.py, which is a python script provided with stringtie.  
 ```
-prepDE_local.py -i ballgown
+python prepDE_local.py -i ballgown
 ```
 ## 7.	We’ll now move to R for the remainder of our analyses. (will be provided as part2)
