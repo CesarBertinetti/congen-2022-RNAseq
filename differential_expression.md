@@ -78,32 +78,51 @@ y
 plotMDS(y)
 ```
 
+## You should see that CFA is a large outlier! We are going to remove CFA and look at the data again
+```
+df = subset(counts, select = -c(CFA_S9) )
+length(which(rowSums(df) == 0))
+gene.counts.noCFA = df[rowSums(df) != 0,]
+sample.info.noCFA = sample.info[sample.info$samples != "CFA_S9",]
+y2 <- DGEList(counts=gene.counts.noCFA,group=sample.info.noCFA$group)
+y2
+plotMDS(y2)
+```
+
 ## Design matrix
 ```
-design <- model.matrix(~group)
+group=sample.info.noCFA$group
+design <- model.matrix(~0+group)
 design
 ```
 
 ## Estimate dispersion 
 ```
-y <- estimateDisp(y,design)
+y2 <- estimateDisp(y2,design)
 ```
 
-## perform quasi-likelihood F-tests:
+## perform quasi-likelihood F-tests for our pairwise comparisons
 ```
-fit <- glmQLFit(y,design)
-qlf <- glmQLFTest(fit,coef=2)
-topTags(qlf)
+fit <- glmQLFit(y2,design)
+
+lrt12 <- glmLRT(fit, contrast=c(1,-1,0))
+lrt13 <- glmLRT(fit, contrast=c(1,0,-1))
+lrt23 <- glmLRT(fit, contrast=c(0,1,-1))
+topTags(lrt12, n=10)
+topTags(lrt13, n=10)
+topTags(lrt23, n=10)
 ```
 
-## summarize the results
+## summarize the results for the pairwise comparisons
 ```
-summary(de <- decideTestsDGE(qlf, p.value = 0.05))
+summary(de12 <- decideTestsDGE(lrt12, p.value = 0.05))
+summary(de13 <- decideTestsDGE(lrt13, p.value = 0.05))
+summary(de23 <- decideTestsDGE(lrt23, p.value = 0.05))
 ```
 
 ## plot the results
 ```
-detags <- rownames(y)[as.logical(de)]
-plotSmear(qlf, de.tags=detags)
+detags <- rownames(y2)[as.logical(de12)]
+plotSmear(lrt12, de.tags=detags)
 abline(h = c(-1, 1), col = "blue")
 ```
