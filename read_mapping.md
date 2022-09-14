@@ -4,6 +4,7 @@
 ```
 cd reference
 hisat2-build NW_025929828.fasta NW_025929828
+cd ..
 ```
 
 ## 2.	Align the reads to the reference fasta using hisat2.
