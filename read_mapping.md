@@ -35,6 +35,7 @@ mkdir ballgown
 ```
 ## 5.	Run for all samples. Let’s write a script that will do this for us! 
 The shell script that works on my computer is saved as mapping_script.sh. 
+Can use "touch mapping_script.sh" to create the blank file
 ```
 input="sample_list.txt"
 while IFS= read -r line
