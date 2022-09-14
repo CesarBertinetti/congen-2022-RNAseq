@@ -38,7 +38,7 @@ dim(counts)
 ## Create map of samples to treatments 
 ```
 samples = colnames(counts)
-group = rep(c("Ac", "Hy"), 6)
+group = rep(c("Ac", "Hi", "Hy"), 6)
 sample.info = data.frame(cbind(samples,group))
 head(sample.info)
 ```
