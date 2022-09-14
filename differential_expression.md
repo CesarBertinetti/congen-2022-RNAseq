@@ -4,7 +4,7 @@ Part 2
 Derived from https://web.stanford.edu/class/bios221/labs/rnaseq/lab_4_rnaseq.html
 
 ## Open RStudio 
-Install edgeR. This only needs to be done once. 
+Install edgeR. This only needs to be done once. No need to do this on the ConGen server, there is a global verion of it! 
 ```
 BiocManager::install("edgeR")
 ```
